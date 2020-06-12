@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/bulma-0.8.2/css/bulma.min.css">
+    <link rel="stylesheet" href="../static/css/home.css">
+    <title>Instagram Viewer</title>
+</head>
+<body>
+    <section class="hero is-black is-fullheight">
+        <div class="hero-head">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                  <a class="navbar-item" href="https://bulma.io">
+                    <img src="../static/images/logo.png" width="112" height="28">
+                  </a>
+              
+                  <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                  </a>
+                </div>
+              
+                <div id="navbarBasicExample" class="navbar-menu">
+                    <div class="navbar-start">
+                        <div class="field">
+                            <div class="control">
+                                <form method="POST">
+                                    <div class="field has-addons">
+                                        <div class="control">
+                                            <input class="input is-primary is-small" type="text" placeholder="Primary input" name="username">
+                                        </div>
+                                        <div class="control">
+                                            <button class="button is-primary is-outlined is-small" >Search</button>
+                                        </div>
+                                      </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+              
+                  <div class="navbar-end">
+                    <div class="navbar-item">
+                      <div class="buttons">
+                        <button class="button is-primary is-outlined is-small">
+                          <strong>Sign up</strong>
+                        </button>
+                        <button class="button is-light is-outlined is-small">
+                          Log in
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+        </div>
+        {% if data == {} %}
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <p class="title">
+                    Try To Search For An Instagram User...
+                </p>
+            </div>
+        </div>
+
+        {% else %}
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <figure class="image is-128x128">
+                <img class="is-rounded" src="{{ data['img']}}">
+            </figure>
+
+            <p class="title">
+                {{data['fullName']}}
+            </p>
+            <p class="subtitle">
+                {{data['description']}}
+            </p>
+
+            <button class="button is-primary is-outlined is-small">
+                <strong>Follow</strong>  
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-footer">
+            <div class="contaner">
+                <nav class="level">
+                    <div class="level-item has-text-centered">
+                      <div>
+                        <p class="heading">Posts</p>
+                        <p class="title">{{data['posts']}}</p>
+                      </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                      <div>
+                        <p class="heading">Followers</p>
+                        <p class="title">{{data['followers']}}</p>
+                      </div>
+                    </div>
+
+                    <div class="level-item has-text-centered">
+                      <div>
+                        <p class="heading">Following</p>
+                        <p class="title">{{data['following']}}</p>
+                      </div>
+                    </div>
+                  </nav>
+            </div>
+        </div>
+        {% endif %}
+      </section>
+</body>
+</html>
